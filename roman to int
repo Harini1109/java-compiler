@@ -1,0 +1,22 @@
+public class R192210535 {
+    public static void main(String[] args) {
+        System.out.println(romanToInt("III"));  // Output: 3
+        System.out.println(romanToInt("IV"));   // Output: 4
+        System.out.println(romanToInt("IX"));   // Output: 9
+        System.out.println(romanToInt("LVIII")); // Output: 58
+        System.out.println(romanToInt("MCMXCIV")); // Output: 1994
+    }
+
+    public static int romanToInt(String romanNumeral) {
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+        String[] symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+        int result = 0;
+        for (int i = 0; i < values.length; i++) {
+            while (romanNumeral.indexOf(symbols[i]) == 0) {
+                result += values[i];
+                romanNumeral = romanNumeral.substring(symbols[i].length());
+            }
+        }
+        return result;
+    }
+}
